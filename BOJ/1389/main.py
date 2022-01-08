@@ -20,6 +20,10 @@ O(N log M * N) = 100 * 12.29 * 100 = 122,900
 M의 상한이 유의미하게 줄어든다면 BFS로 구현하는 시간복잡도 면에서 더 유리할 것으로
 생각된다.
 """
+"""
+BOJ 1389 케빈 베이컨의 6단계 법칙 문제를 BFS로 풀이
+노드별 방문테이블을
+"""
 import heapq
 import sys
 f_input = sys.stdin.readline
@@ -62,4 +66,33 @@ for i in range(1, N + 1):
             sum_lct += lct_val
     level_by_person.append((i, sum_lct))
 level_by_person.sort(key=lambda x: x[1])
-print(level_by_person[0][0])
+# print(level_by_person[0][0])
+
+# from collections import deque
+# import sys
+# input = sys.stdin.readline
+#
+#
+# N, M = map(int, input().rstrip().split())
+# graph = [[] for _ in range(N + 1)]
+#
+# for _ in range(M):
+#     p1, p2 = map(int, input().rstrip().split())
+#     graph[p1].append(p2)
+#     graph[p2].append(p1)
+#
+# level_by_person = list()
+# for s_node in range(1, N + 1):
+#     visited = [-1] * (N + 1)
+#     queue = deque()
+#     queue.append(s_node)
+#     visited[s_node] += 1
+#     while queue:
+#         c_node = queue.popleft()
+#         for n_node in graph[c_node]:
+#             if visited[n_node] == -1:
+#                 queue.append(n_node)
+#                 visited[n_node] = visited[c_node] + 1
+#     level_by_person.append((s_node, sum(visited)))
+# level_by_person.sort(key=lambda x: x[1])
+# print(level_by_person[0][0])
